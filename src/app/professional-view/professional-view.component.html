@@ -1,0 +1,181 @@
+<div class="col-xs-10">
+  <h2>Professionals :</h2>
+
+  <button (click)='onSortView()' >
+    <img style="width:17px;height:17px;" src="https://img.icons8.com/ios/452/filter-and-sort.png">
+  </button>
+
+  <ul *ngIf="sortPro === true ">
+
+    <li> Sort Professional : </li>
+
+    <form (ngSubmit)="onSort(f)" #f="ngForm">
+      <li>
+        <div class="form-group">
+          <label for="idSelect">
+            id :
+          </label>
+          <input type="text" id="idSelect" class="form-control" name="idSelect" ngModel>
+        </div>
+      </li>
+
+      <li>
+        <div class="form-group">
+          <label for="nameSelect" >
+            Name :
+          </label>
+          <input type="text" id="nameSelect" class="form-control" name="nameSelect" ngModel>
+        </div>
+      </li>
+
+      <li>
+        <div class="form-group">
+          <label for="professionSelect">
+            Profession :
+          </label>
+          <select id="professionSelect" class="form-control" name="professionSelect" ngModel="all">
+            <option value="all" > all </option>
+            <option value="Médecin_généraliste">Médecin_généraliste</option>
+            <option value="Chirurgien">Chirurgien</option>
+            <option value="Infirmier">Infirmier</option>
+            <option value="kinésithérapeute">kinésithérapeute</option>
+            <option value="Assistante_Sociale">Assistante_Sociale</option>
+            <option value="Psychologue">Psychologue</option>
+            <option value="Autre">Autre</option>
+          </select>
+        </div>
+      </li>
+
+      <li>
+        <div class="form-group">
+          <label for="sortSelect">
+            Sort by :
+          </label>
+          <select id="sortSelect" class="form-control" name="sortSelect" ngModel>
+            <option value=""></option>
+            <option value="name">name</option>
+            <option value="firstname">firstname</option>
+            <option value="profession">profession</option>
+          </select>
+        </div>
+      </li>
+
+
+      <li>
+        <button class="btn btn-primary" class="btn btn-primary"   type="submit">
+          Apply
+        </button>
+      </li>
+
+    </form>
+    <li>
+      <button (click)='onSortStopView()' *ngIf="sortPro === true ">
+        Cancel
+      </button>
+    </li>
+  </ul>
+
+
+
+  <ul class="list-group">
+    <app-professional *ngFor="let professionnal of professionals"
+                  [name]='professionnal.name'
+                  [firstname]='professionnal.firstname'
+                  [email]='professionnal.email'
+                  [profession]='professionnal.profession'
+                  [phone]='professionnal.phone'
+                  [address]='professionnal.address'
+                  [id]="professionnal.id">
+    </app-professional>
+  </ul>
+
+  <p>
+    <button class="btn btn-primary"
+            (click)="onFetch()">Refresh</button>
+  </p>
+
+  <button (click)='addPro=true' *ngIf="addPro=== false ">
+    Add Professional
+  </button>
+
+
+  <ul *ngIf="addPro === true ">
+    <li> Add a professional  </li>
+    <form (ngSubmit)="onCreate(f)" #f="ngForm">
+      <li>
+        <div class="form-group">
+          <label for="name" >
+            Name :
+          </label>
+          <input type="text" id="name" class="form-control" name="name"  required ngModel>
+        </div>
+      </li>
+
+      <li>
+        <div class="form-group">
+          <label for="firstname">
+            firstname :
+          </label>
+          <input type="text" id="firstname" class="form-control" name="firstname"  required ngModel>
+        </div>
+      </li>
+
+      <li>
+        <div class="form-group">
+          <label for="email">
+            Email :
+          </label>
+          <input type="text" id="email" class="form-control" name="email" ngModel>
+        </div>
+      </li>
+
+      <li>
+        <div class="form-group">
+          <label for="address">
+            Address :
+          </label>
+          <input type="text" id="address" class="form-control" name="address" ngModel>
+        </div>
+      </li>
+
+      <li>
+        <div class="form-group">
+          <label for="phone">
+            Phone :
+          </label>
+          <input type="text" id="phone" class="form-control" name="phone" ngModel>
+        </div>
+      </li>
+
+      <li>
+        <div class="form-group">
+          <label for="profession">
+            Profession :
+          </label>
+          <select id="profession" class="form-control" name="profession" ngModel required>
+            <option value="Médecin_généraliste">Médecin_généraliste</option>
+            <option value="Chirurgien">Chirurgien</option>
+            <option value="Infirmier">Infirmier</option>
+            <option value="kinésithérapeute">kinésithérapeute</option>
+            <option value="Assistante_Sociale">Assistante_Sociale</option>
+            <option value="Psychologue">Psychologue</option>
+            <option value="Autre">Autre</option>
+          </select>
+        </div>
+      </li>
+
+      <li>
+        <button class="btn btn-primary" type="submit" [disabled]="f.invalid">
+          Apply
+        </button>
+      </li>
+
+    </form>
+    <li>
+      <button (click)='onCreateStopView()' *ngIf="addPro=== true ">
+        Cancel
+      </button>
+    </li>
+  </ul>
+</div>
+
