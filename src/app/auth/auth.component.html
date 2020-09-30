@@ -10,41 +10,38 @@
 
 <h2> Authentification </h2>
 
-<ul>
 
-      <div class="form-group text-center">
-        <span class="input-group-text"><i class="fas fa-user"></i></span>
+      <div class="form-group">
         <label for="name" >
         <input type="text" id="name" class="form-control"  name="name" placeholder="username"  ngModel>
         </label>
       </div>
 
-      <div class="form-group text-center">
-        <span class="input-group-text"><i class="fas fa-key"></i></span>
+      <div class="form-group">
         <label for="password">
-        <input type="text" id="password" class="form-control" name="password" placeholder="password" ngModel>
+        <input type="password" id="password" class="form-control" name="password" placeholder="password" ngModel>
         </label>
       </div>
 
   <div class="form-group">
-    <div class="custom-control custom-checkbox">
-      <input type="checkbox" class="custom-control-input" id="customControlInline">
-      <label class="custom-control-label" for="customControlInline">Remember me</label>
+    <div>
+      <input type="checkbox"  id="customControlInline">
+      <label class="remember" for="customControlInline" >Remember me</label>
     </div>
   </div>
-  </ul>
 
-  <div class="col-md-12 text-center">
+
+  <div class="col-md-12">
       <button class="btn btn-success" *ngIf="!authStatus" (click)="onSignIn()">
       Se connecter
   </button>
   </div>
 
 
-<div class="d-flex justify-content-center text-center links">
+<div class="forgot">
   Don't have an account? <a href="#" class="ml-2">Sign Up</a>
 </div>
-<div class="d-flex justify-content-center links text-center">
+<div>
   <a href="#">Forgot your password?</a>
 </div>
   </div>
