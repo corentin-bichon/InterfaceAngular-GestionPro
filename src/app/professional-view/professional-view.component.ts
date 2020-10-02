@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {Subscription} from 'rxjs';
 import { ProfessionalService } from '../services/professional.service';
 import {NgForm} from '@angular/forms';
+import {ProfessionalCustomService} from '../services/professional-custom.service';
 
 @Component({
   selector: 'app-professional-view',
@@ -17,7 +18,7 @@ export class ProfessionalViewComponent implements OnInit {
   nameS = '%';
   professionS = 'Percent' ;
 
-  constructor(private professionalService: ProfessionalService ) {
+  constructor(private professionalService: ProfessionalService, private enterpriseService: ProfessionalCustomService ) {
     this.professionalService.getProfessionalsFromServer('id', '%', '%', 'Percent');
   }
 
@@ -32,6 +33,7 @@ export class ProfessionalViewComponent implements OnInit {
       }
     );
     this.professionalService.emitProfessionnalSubject();
+    this.name = this.enterpriseService.getEnterprise_Name;
   }
 
   // tslint:disable-next-line:typedef
@@ -79,4 +81,8 @@ export class ProfessionalViewComponent implements OnInit {
     // tslint:disable-next-line:max-line-length
     this.professionalService.getProfessionalsFromServer( this.sortS, this.idS, this.nameS, this.professionS);
   }
+
+  name = 'MyEnterprise' ;
+
+
 }

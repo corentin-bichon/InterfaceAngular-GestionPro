@@ -14,7 +14,6 @@ import { AuthService } from './services/auth.service';
 import { ProfessionalCustomService } from './services/professional-custom.service';
 import { FourOhFourComponent } from './four-oh-four/four-oh-four.component';
 import { AuthGuard } from './services/auth-guard.services';
-import { HeaderComponent } from './header/header.component';
 
 
 const appRoutes: Routes = [
@@ -32,7 +31,6 @@ const appRoutes: Routes = [
     ProfessionalComponent,
     AuthComponent,
     FourOhFourComponent,
-    HeaderComponent
   ],
   imports: [
     FormsModule,
