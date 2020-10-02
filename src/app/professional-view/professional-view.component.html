@@ -1,34 +1,42 @@
-<div class="col-xs-10">
-  <h2>Professionals :</h2>
+<div class="box">
+  <h3> professional</h3>
+  <h2> My Professionals </h2>
 
-  <button (click)='onSortView()' >
-    <img style="width:17px;height:17px;" src="https://img.icons8.com/ios/452/filter-and-sort.png">
-  </button>
+  <!-- tools bar with Add and Sort -->
 
-  <ul *ngIf="sortPro === true ">
+  <div class="barre">
+    <ul>
+      <li><a [ngStyle]="{backgroundColor: sortPro === true  ? '#479ba9' : '#0C768A'}" routerLinkActive="active" (click)='onSortView()'> Filter </a></li>
+      <li><a routerLinkActive="active" (click)="onFetch()" > Add </a></li>
+      <li style="float:right"><a (click)="onFetch()" > Refresh </a></li>
+    </ul>
+  </div>
 
-    <li> Sort Professional : </li>
+  <!-- Sort -->
+  <div *ngIf="sortPro === true " class="filter" >
 
-    <form (ngSubmit)="onSort(f)" #f="ngForm">
-      <li>
-        <div class="form-group">
+    <div> <img style="width:65px;height:65px;" src="https://img.icons8.com/ios/452/filter-and-sort.png">   </div>
+
+    <form (ngSubmit)="onSort(f)" #f="ngForm" class="form">
+
+        <div class="form-group"  style="width: 70px">
           <label for="idSelect">
             id :
           </label>
           <input type="text" id="idSelect" class="form-control" name="idSelect" ngModel>
         </div>
-      </li>
 
-      <li>
+
+
         <div class="form-group">
           <label for="nameSelect" >
             Name :
           </label>
           <input type="text" id="nameSelect" class="form-control" name="nameSelect" ngModel>
         </div>
-      </li>
 
-      <li>
+
+
         <div class="form-group">
           <label for="professionSelect">
             Profession :
@@ -44,9 +52,9 @@
             <option value="Autre">Autre</option>
           </select>
         </div>
-      </li>
 
-      <li>
+
+
         <div class="form-group">
           <label for="sortSelect">
             Sort by :
@@ -58,25 +66,26 @@
             <option value="profession">profession</option>
           </select>
         </div>
-      </li>
 
 
-      <li>
-        <button class="btn btn-primary" class="btn btn-primary"   type="submit">
+
+      <div>
+        <button class="btn btn-success"  type="submit">
           Apply
         </button>
-      </li>
+      </div>
 
     </form>
-    <li>
-      <button (click)='onSortStopView()' *ngIf="sortPro === true ">
+
+    <div>
+      <button (click)='onSortStopView()' *ngIf="sortPro === true " type="button" class="btn btn-secondary">
         Cancel
       </button>
-    </li>
-  </ul>
+    </div>
+  </div>
 
 
-
+  <!-- read all professionals -->
   <ul class="list-group">
     <app-professional *ngFor="let professionnal of professionals"
                   [name]='professionnal.name'
@@ -89,16 +98,11 @@
     </app-professional>
   </ul>
 
-  <p>
-    <button class="btn btn-primary"
-            (click)="onFetch()">Refresh</button>
-  </p>
-
   <button (click)='addPro=true' *ngIf="addPro=== false ">
     Add Professional
   </button>
 
-
+  <!-- Add -->
   <ul *ngIf="addPro === true ">
     <li> Add a professional  </li>
     <form (ngSubmit)="onCreate(f)" #f="ngForm">

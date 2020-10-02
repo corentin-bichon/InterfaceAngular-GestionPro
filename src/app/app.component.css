@@ -1,15 +1,24 @@
 
 body {
-  color:black;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
   background-color:white;
-  background-image:url(https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTbn981Fe0w2j-QN69qKWv3x-eHEBEJeVpAOg&usqp=CAU);
-  background-size: 100% ;
+  background-image:url(https://image.freepik.com/photos-gratuite/fond-ecran-vignette-debout-profession-medicale_1134-743.jpg);
+  background-repeat: no-repeat;
+  background-size:120%;
+
+}
+
+.site-content {
+  flex: 1;
 }
 
 footer {
   color: #1c1a1a;
   text-align: center;
-  background-color: #c0c3fa;
+  background-color: #ff3247;
   border-color: #1c1a1a;
   border-style: solid;
   border-width: 2px 0px 0px 0px ;
@@ -22,10 +31,9 @@ noscript {
 }
 
 table {
-  height: 100% ;
-  width: auto ;
-  border-bottom: #1c1a1a;
-  border-bottom-width: medium;
+  height: 100%;
+  width: auto;
+
 }
 
 ul {
@@ -34,6 +42,7 @@ ul {
   padding: 0;
   overflow: hidden;
   background-color: #333;
+  background-image: linear-gradient(208deg,#d70860 0%,#ff3247 100%)!important;
 }
 
 li {
@@ -45,6 +54,7 @@ li {
   width: 125px;
   border-radius: 50%;
   border: 2px solid white;
+  position: absolute;
 }
 
 li a {
@@ -56,15 +66,19 @@ li a {
 }
 
 li a:hover:not(.active) {
-  background-color: #111;
+  background-image: linear-gradient(208deg,#ff3247 0%,#d70860 100%)!important;
 }
 
 .active {
-  background-color: #4CAF50;
+  background-color : #d7085b;
 }
 
 .barre{
   width: 100%;
-  maring-top: 500px;
+  margin-top: 40px;
+  margin-left: 120px;
+}
 
+.box {
+  display: flex;
 }

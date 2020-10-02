@@ -1,8 +1,8 @@
 <link type="text/css" rel="stylesheet" href="auth.component.css">
 
 <div class="frame">
-  <div class="brand_logo_container">
-    <img src="https://pbs.twimg.com/profile_images/1109051430713860096/-rs4R4b1_400x400.png" class="brand_logo" alt="Logo">
+  <div>
+    <img class="brand_logo" src= {{logo}} alt="Enterprise Logo">
   </div>
 
   <div class="connection" *ngIf="!authStatus">
@@ -41,7 +41,7 @@
     </div>
 
     <div>
-      <a href="#">Forgot your password?</a>
+      <a class="forgot">Forgot your password?</a>
     </div>
   </div>
 

@@ -11,8 +11,11 @@ import {FormsModule} from '@angular/forms';
 import {AppRoutingModule} from './app-routing.module';
 import { AuthComponent } from './auth/auth.component';
 import { AuthService } from './services/auth.service';
+import { ProfessionalCustomService } from './services/professional-custom.service';
 import { FourOhFourComponent } from './four-oh-four/four-oh-four.component';
 import { AuthGuard } from './services/auth-guard.services';
+import { HeaderComponent } from './header/header.component';
+
 
 const appRoutes: Routes = [
   {path: 'professional', canActivate: [AuthGuard], component: ProfessionalViewComponent},
@@ -28,7 +31,8 @@ const appRoutes: Routes = [
     ProfessionalViewComponent,
     ProfessionalComponent,
     AuthComponent,
-    FourOhFourComponent
+    FourOhFourComponent,
+    HeaderComponent
   ],
   imports: [
     FormsModule,
@@ -40,7 +44,8 @@ const appRoutes: Routes = [
   providers: [
     ProfessionalService,
     AuthService,
-    AuthGuard
+    AuthGuard,
+    ProfessionalCustomService
   ],
   bootstrap: [AppComponent]
 })

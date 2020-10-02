@@ -1,6 +1,6 @@
 export class AuthService {
 
-  isAuth = false;
+  private isAuth = false;
 
   // tslint:disable-next-line:typedef
   signIn() {

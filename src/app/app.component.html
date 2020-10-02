@@ -1,29 +1,21 @@
 <body>
-<table>
-  <td>
-    <img src="https://pbs.twimg.com/profile_images/1109051430713860096/-rs4R4b1_400x400.png" class="brand_logo" alt="Logo">
-  </td>
+<header class="site-header">
+<div class="box">
+  <div>
+    <img src="{{ logo }}" class="brand_logo" alt="Logo">
+  </div>
 
-  <td class="barre">
+  <div class="barre">
     <ul>
-      <li><a  routerLinkActive="active" routerLink="auth">Authentification</a></li>
-      <li><a  routerLinkActive="active" routerLink="professional" >Professional</a></li>
+      <li><a routerLinkActive="active" routerLink="auth">Authentification</a></li>
+      <li><a routerLinkActive="active" routerLink="professional" >Professional</a></li>
       <li style="float:right"><a routerLinkActive="active"  routerLink="professional">help</a></li>
     </ul>
-  </td>
-</table>
+  </div>
+</div>
+</header>
 
-      <!--nav class="navbar navbar-default">
-          <a class="navbar-brand" href="#">
-            <img src="https://www.entreprendre-montpellier.com/sites/default/files/styles/visuel_page_detail_archive/public/ressources/archives/move_in_med_0_0.png?itok=UUgo0jiv" class="brand_logo" alt="Logo">
-          </a>
-          <ul class="nav navbar-nav">
-            <li routerLinkActive="active"> <a routerLink="auth">Authentication</a></li>
-            <li routerLinkActive="active"> <a routerLink="professional">Professional</a></li>
-          </ul>
-      </nav-->
-
-
+<main class="site-content">
 <div class="container">
   <div class="row">
     <router-outlet></router-outlet>
@@ -35,10 +27,11 @@
     Ce site utilise du Javascript, or celui-ci a été désactivé dans votre navigateur. Vous ne pourrez pas consulter ce site si vous n'autorisez pas la technologie Javascript.
   </div>
 </noscript>
+</main>
 
-</body>
 
-<footer>
-  <p> Platerforme collaborative </p>
+<footer class="site-footer">
+  <p> Réalisé par Corentin BICHON </p>
   <p> GestionPro version 1.0.2 - copyright © 2020</p>
 </footer>
+</body>
