@@ -86,7 +86,7 @@
 
 
   <!-- Add -->
-  <ul *ngIf="addPro === true " class="add" >
+  <ul *ngIf="addPro === true " class="add barre-pro" >
     <li> <img style="width:65px;height:65px;margin-bottom: 20px" src="https://download.seaicons.com/icons/custom-icon-design/flatastic-4/512/Male-user-add-icon.png">  </li>
     <form (ngSubmit)="onCreate(f)" #f="ngForm">
       <li>
@@ -164,7 +164,7 @@
   </ul>
 
   <!-- read all professionals -->
-  <ul class="list-group">
+  <div class="list-group">
     <app-professional *ngFor="let professionnal of professionals"
                           [name]='professionnal.name'
                           [firstname]='professionnal.firstname'
@@ -172,8 +172,8 @@
                           [profession]='professionnal.profession'
                           [phone]='professionnal.phone'
                           [address]='professionnal.address'
-                          [id]='professionnal.id' >
+                          [id]='professionnal.id' class="app-pro">
     </app-professional>
-  </ul>
+  </div>
 </div>
 
