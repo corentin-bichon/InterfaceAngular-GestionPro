@@ -1,0 +1,19 @@
+h1 {
+  text-align: center ;
+  font-weight: bold;
+  color: #1c1a1a;
+}
+
+.dialog-case {
+  background: white ;
+  opacity: 0.95 ;
+  border-radius: 5px;
+}
+
+h5 {
+  color : darkgray ;
+}
+
+.mat-dialog-actions {
+  margin-right: 7px;
+}

@@ -1,9 +1,10 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Inject, Input, OnInit} from '@angular/core';
 import { ProfessionalService } from '../services/professional.service';
 import {NgForm} from '@angular/forms';
 import {PatientService} from '../services/patient.service';
 import {Subscription} from 'rxjs';
 import { RelationService } from '../services/relation.service';
+import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 
 @Component({
   selector: 'app-professional',
@@ -13,7 +14,7 @@ import { RelationService } from '../services/relation.service';
 export class ProfessionalComponent implements OnInit {
 
   // tslint:disable-next-line:max-line-length
-  constructor(private professionalService: ProfessionalService, private patientService: PatientService, private relationService: RelationService ) {
+  constructor(private professionalService: ProfessionalService, private patientService: PatientService, private relationService: RelationService, public dialog: MatDialog ) {
     this.patientService.getPatientFromServer();
     this.relationService.getRelationFromServer('%');
   }
@@ -112,5 +113,39 @@ export class ProfessionalComponent implements OnInit {
     console.log(form.value);
     this.relationService.saveRelationToServer(form.value);
     this.relationService.getRelationFromServer('%');
+  }
+
+  openDialog(): void {
+    const dialogRef = this.dialog.open(DialogOverviewDeleteComponent, {
+      width: '250px',
+      data: {name: this.name, firstname: this.firstname, id: this.id }
+    });
+  }
+}
+
+export interface DialogData {
+  firstname: string;
+  name: string;
+  id: string;
+}
+
+@Component({
+  selector: 'app-dialog-overview',
+  templateUrl: 'dialog-overview-delete.html',
+})
+export class DialogOverviewDeleteComponent {
+
+  constructor(
+    public dialogRef: MatDialogRef<DialogOverviewDeleteComponent>,
+    private professionalService: ProfessionalService,
+    @Inject(MAT_DIALOG_DATA) public data: DialogData) {}
+
+  onNoClick(): void {
+    this.dialogRef.close();
+  }
+
+  onClick(id): void {
+    this.professionalService.deleteProfessionalsFromServer(id);
+    this.dialogRef.close();
   }
 }

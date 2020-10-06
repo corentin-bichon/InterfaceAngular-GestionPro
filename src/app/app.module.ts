@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { ProfessionalViewComponent } from './professional-view/professional-view.component';
-import { ProfessionalComponent } from './professional/professional.component';
+import {DialogOverviewDeleteComponent, ProfessionalComponent} from './professional/professional.component';
 import {ProfessionalService} from './services/professional.service';
 import {RouterModule, Routes} from '@angular/router';
 import {HttpClientModule} from '@angular/common/http';
@@ -16,6 +16,10 @@ import { FourOhFourComponent } from './four-oh-four/four-oh-four.component';
 import { AuthGuard } from './services/auth-guard.services';
 import { PatientService } from './services/patient.service';
 import { RelationService } from './services/relation.service';
+import {MatDialogModule} from '@angular/material/dialog';
+import {BrowserAnimationsModule, NoopAnimationsModule} from '@angular/platform-browser/animations';
+
+
 
 
 const appRoutes: Routes = [
@@ -34,13 +38,19 @@ const appRoutes: Routes = [
     ProfessionalComponent,
     AuthComponent,
     FourOhFourComponent,
+    DialogOverviewDeleteComponent
   ],
   imports: [
     FormsModule,
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
-    RouterModule.forRoot(appRoutes)
+    RouterModule.forRoot(appRoutes),
+    BrowserAnimationsModule,
+    NoopAnimationsModule,
+  ],
+  exports: [
+    MatDialogModule,
   ],
   providers: [
     ProfessionalService,

@@ -1,0 +1,13 @@
+
+<div class="dialog-case">
+  <h1 > Do you confirm the deletion ? </h1>
+
+  <h5> If you confirm, your professional will be permanently deleted </h5>
+
+  <p>{{ data.id }} - {{ data.firstname }} {{ data.name | uppercase }}</p>
+
+  <div mat-dialog-actions>
+    <button mat-button  class="btn btn-success"(click)="onClick(data.id)" cdkFocusInitial> Confirm </button>
+    <button mat-button class="btn btn-danger" (click)="onNoClick()"> Cancel </button>
+  </div>
+</div>
