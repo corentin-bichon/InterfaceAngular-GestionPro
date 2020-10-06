@@ -1,0 +1,26 @@
+.add-relation {
+  border:1px solid black;
+  padding: 1px 15px 10px 15px ;
+  margin-top: 20px;
+}
+
+h5 {
+  text-align: center ;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color: #0C768A;
+  display: block;
+  text-transform: uppercase;
+  font-weight:bold;
+}
+
+input:invalid {
+  box-shadow: 0 0 5px 1px red;
+}
+
+select:invalid {
+  box-shadow: 0 0 5px 1px red;
+}
+
+input:focus:invalid {
+  outline: none;
+}

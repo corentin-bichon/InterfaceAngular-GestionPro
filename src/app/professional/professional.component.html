@@ -10,7 +10,13 @@
   <button (click)='onUpdateView()'>
     <img style="width:17px;height:17px;" src="https://image.flaticon.com/icons/png/512/88/88450.png">
   </button>
+
+  <button (click)='onRelationView()'>
+    <img style="width:17px;height:17px;" src="https://w7.pngwing.com/pngs/766/1015/png-transparent-hyperlink-computer-icons-symbol-blog-link-miscellaneous-text-logo.png">
+  </button>
+
   </h4>
+
 
   <ul *ngIf="modification === false ">
     <li> id : {{ id }} </li>
@@ -20,57 +26,54 @@
     <li> Address : {{ address }} </li>
     <li> Phone : {{ phone }}</li>
     <li> Profession : {{ profession}}</li>
+    <li> my patient(s) : </li>
+    <ul *ngFor="let r of relations">
+      <li *ngIf="r.pro_id === id">
+        {{ r.pat_id }} - {{ OnViewPatient(r.pat_id) }} : {{ r.sickness }}
+      </li>
+    </ul>
   </ul>
 
+
+  <!-- Modification -->
   <ul *ngIf="modification === true ">
-    <li> id : {{ id }} </li>
+    <div> id : {{ id }} </div>
     <form (ngSubmit)="onUpdate(id,f)" #f="ngForm">
-      <li>
         <div class="form-group">
           <label for="name" >
               Name :
           </label>
           <input type="text" id="name" class="form-control" name="name" [(ngModel)]="name" required>
         </div>
-      </li>
 
-      <li>
         <div class="form-group">
           <label for="firstname">
             firstname :
           </label>
           <input type="text" id="firstname" class="form-control" name="firstname" [(ngModel)]="firstname" required>
         </div>
-      </li>
 
-      <li>
         <div class="form-group">
           <label for="email">
             Email :
           </label>
-          <input type="text" id="email" class="form-control" name="email" [(ngModel)]="email">
+          <input type="email"  pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"  id="email" class="form-control" name="email" [(ngModel)]="email">
         </div>
-      </li>
 
-      <li>
         <div class="form-group">
           <label for="address">
             Address :
           </label>
           <input type="text" id="address" class="form-control" name="address" [(ngModel)]="address"  >
         </div>
-      </li>
 
-      <li>
         <div class="form-group">
           <label for="phone">
             Phone :
           </label>
-          <input type="text" id="phone" class="form-control" name="phone" [(ngModel)]="phone">
+          <input type="text"  pattern="[0-9]{10}$" id="phone" class="form-control" name="phone" [(ngModel)]="phone" minlength="10" maxlength="10">
         </div>
-      </li>
 
-      <li>
         <div class="form-group">
           <label for="profession">
             Profession :
@@ -85,19 +88,58 @@
             <option value="Autre">Autre</option>
           </select>
         </div>
-      </li>
 
-      <li>
+      <div>
         <button class="btn btn-primary"  type="submit" *ngIf="modification === true " [disabled]="f.invalid">
           Apply
         </button>
-      </li>
 
+        <button (click)='modification=false' *ngIf="modification === true " class="btn btn-secondary">
+        Cancel
+        </button>
+      </div>
     </form>
-    <li>
-      <button (click)='onFetch()' *ngIf="modification === true ">
-      Cancel
-      </button>
-  </li>
+  </ul>
+
+  <ul *ngIf="relationView === true" class="add-relation" >
+    <form (ngSubmit)="onCreateRelation(f)"  #f="ngForm" >
+      <div class="form-group">
+        <h5>
+          Add patient
+        </h5>
+      </div>
+
+      <div class="form-group">
+        <label>
+          Patient :
+        </label>
+        <select id="pat_id" class="form-control" name="pat_id" ngModel required>
+          <option *ngFor="let p of patients" [value]="p.id"> {{ p.id }} - {{ p.firstname }} {{ p.name | uppercase  }} </option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="sickness" >
+          Sickness :
+        </label>
+        <input type="text" id="sickness" class="form-control" name="sickness"  ngModel>
+      </div>
+      <div class="form-group">
+        <label for regular_doctor >
+          regular doctor :
+          <input type="checkbox"  id="regular_doctor" name="regular_doctor" ngModel>
+        </label>
+      </div>
+
+      <div>
+        <button class="btn btn-success"  type="submit">
+          Apply
+        </button>
+
+        <button (click)='relationView=false' class="btn btn-secondary"  *ngIf="relationView === true">
+          Cancel
+        </button>
+      </div>
+    </form>
   </ul>
 </li>

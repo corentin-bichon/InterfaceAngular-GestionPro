@@ -60,6 +60,16 @@ li a:hover:not(.active) {
   background-color: #479ba9;
 }
 
+.add {
+  display: flex;
+  flex-flow : column;
+  align-content: space-between;
+  align-items: center;
+  padding:20px 300px 20px 300px;
+  margin-top: -15px;
+  background-color: #a97393;
+}
+
 .form {
   display: flex;
   margin-left: 20px;
@@ -76,8 +86,25 @@ li a:hover:not(.active) {
 
 }
 
-.btn-secondary {
+.btn-sort {
   text-align: center;
   margin: 28px 10px 0px 10px ;
 
+}
+
+.btn-add {
+  text-align: center;
+  margin: 28px 10px 0px 10px ;
+}
+
+input:invalid {
+  box-shadow: 0 0 5px 1px red;
+}
+
+select:invalid {
+  box-shadow: 0 0 5px 1px red;
+}
+
+input:focus:invalid {
+  outline: none;
 }

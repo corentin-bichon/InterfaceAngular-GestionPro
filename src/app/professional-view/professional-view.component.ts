@@ -11,6 +11,11 @@ import {ProfessionalCustomService} from '../services/professional-custom.service
 })
 export class ProfessionalViewComponent implements OnInit {
 
+  // tslint:disable-next-line:max-line-length
+  constructor(private professionalService: ProfessionalService ,  private enterpriseService: ProfessionalCustomService ) {
+    this.professionalService.getProfessionalsFromServer('id', '%', '%', 'Percent');
+  }
+
   addPro = false ;
   sortPro = false ;
   sortS = 'id' ;
@@ -18,12 +23,11 @@ export class ProfessionalViewComponent implements OnInit {
   nameS = '%';
   professionS = 'Percent' ;
 
-  constructor(private professionalService: ProfessionalService, private enterpriseService: ProfessionalCustomService ) {
-    this.professionalService.getProfessionalsFromServer('id', '%', '%', 'Percent');
-  }
-
   professionals: any[];
   professionalSubsription: Subscription;
+
+
+  name = '' ;
 
   // tslint:disable-next-line:typedef
   ngOnInit(){
@@ -81,8 +85,6 @@ export class ProfessionalViewComponent implements OnInit {
     // tslint:disable-next-line:max-line-length
     this.professionalService.getProfessionalsFromServer( this.sortS, this.idS, this.nameS, this.professionS);
   }
-
-  name = 'MyEnterprise' ;
 
 
 }

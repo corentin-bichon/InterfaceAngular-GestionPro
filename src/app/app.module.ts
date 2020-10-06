@@ -14,6 +14,8 @@ import { AuthService } from './services/auth.service';
 import { ProfessionalCustomService } from './services/professional-custom.service';
 import { FourOhFourComponent } from './four-oh-four/four-oh-four.component';
 import { AuthGuard } from './services/auth-guard.services';
+import { PatientService } from './services/patient.service';
+import { RelationService } from './services/relation.service';
 
 
 const appRoutes: Routes = [
@@ -23,6 +25,7 @@ const appRoutes: Routes = [
   {path: 'not-found', component: FourOhFourComponent },
   {path: '**', redirectTo: '/not-found'},
 ];
+
 
 @NgModule({
   declarations: [
@@ -43,7 +46,9 @@ const appRoutes: Routes = [
     ProfessionalService,
     AuthService,
     AuthGuard,
-    ProfessionalCustomService
+    ProfessionalCustomService,
+    PatientService,
+    RelationService,
   ],
   bootstrap: [AppComponent]
 })

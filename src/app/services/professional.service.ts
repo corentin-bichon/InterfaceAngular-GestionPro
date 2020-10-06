@@ -61,7 +61,7 @@ export class ProfessionalService implements OnInit {
         (response) => {
           this.professional = response;
           this.emitProfessionnalSubject();
-          console.log('Get appareilsFromServer : success');
+          console.log('Get professionalsFromServer : success');
         },
         (error) => {
           console.log('Erreur ! : ' + error);

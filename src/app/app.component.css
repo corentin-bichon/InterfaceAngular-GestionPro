@@ -4,8 +4,10 @@ body {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  background-color:white;
-  background-image:url(https://image.freepik.com/photos-gratuite/fond-ecran-vignette-debout-profession-medicale_1134-743.jpg);
+  background-color:  white  ;
+  background-image : linear-gradient(to bottom, transparent, white),
+                      url("https://image.freepik.com/photos-gratuite/fond-ecran-vignette-debout-profession-medicale_1134-743.jpg"),
+                     linear-gradient(to right, #DBD9E2, #AEAEAE );
   background-repeat: no-repeat;
   background-size:120%;
 
@@ -24,6 +26,7 @@ footer {
   border-width: 2px 0px 0px 0px ;
   padding-top:8px;
   margin-bottom: 0%;
+  color : white ;
 }
 
 noscript {

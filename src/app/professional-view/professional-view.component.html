@@ -6,8 +6,8 @@
 
   <div class="barre">
     <ul>
-      <li><a [ngStyle]="{backgroundColor: sortPro === true  ? '#479ba9' : '#0C768A'}" routerLinkActive="active" (click)='onSortView()'> Filter </a></li>
-      <li><a routerLinkActive="active" (click)="onFetch()" > Add </a></li>
+      <li><a [ngStyle]="{backgroundColor: sortPro === true  ? '#479ba9' : '#0C768A'}"  (click)='onSortView();onCreateStopView()'> Filter </a></li>
+      <li><a [ngStyle]="{backgroundColor: addPro === true  ?  '#a97393' : '#0C768A'}" (click)="onCreateView();onSortStopView()" > Add </a></li>
       <li style="float:right"><a (click)="onFetch()" > Refresh </a></li>
     </ul>
   </div>
@@ -78,33 +78,16 @@
     </form>
 
     <div>
-      <button (click)='onSortStopView()' *ngIf="sortPro === true " type="button" class="btn btn-secondary">
+      <button (click)='onSortStopView()' *ngIf="sortPro === true " type="button" class="btn btn-secondary btn-sort">
         Cancel
       </button>
     </div>
   </div>
 
 
-  <!-- read all professionals -->
-  <ul class="list-group">
-    <app-professional *ngFor="let professionnal of professionals"
-                  [name]='professionnal.name'
-                  [firstname]='professionnal.firstname'
-                  [email]='professionnal.email'
-                  [profession]='professionnal.profession'
-                  [phone]='professionnal.phone'
-                  [address]='professionnal.address'
-                  [id]="professionnal.id">
-    </app-professional>
-  </ul>
-
-  <button (click)='addPro=true' *ngIf="addPro=== false ">
-    Add Professional
-  </button>
-
   <!-- Add -->
-  <ul *ngIf="addPro === true ">
-    <li> Add a professional  </li>
+  <ul *ngIf="addPro === true " class="add" >
+    <li> <img style="width:65px;height:65px;margin-bottom: 20px" src="https://download.seaicons.com/icons/custom-icon-design/flatastic-4/512/Male-user-add-icon.png">  </li>
     <form (ngSubmit)="onCreate(f)" #f="ngForm">
       <li>
         <div class="form-group">
@@ -129,7 +112,7 @@
           <label for="email">
             Email :
           </label>
-          <input type="text" id="email" class="form-control" name="email" ngModel>
+          <input type="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"  id="email" class="form-control" name="email" ngModel style="width:404px">
         </div>
       </li>
 
@@ -138,7 +121,7 @@
           <label for="address">
             Address :
           </label>
-          <input type="text" id="address" class="form-control" name="address" ngModel>
+          <input type="text" id="address" class="form-control" name="address" ngModel  style="width:404px">
         </div>
       </li>
 
@@ -147,7 +130,7 @@
           <label for="phone">
             Phone :
           </label>
-          <input type="text" id="phone" class="form-control" name="phone" ngModel>
+          <input  id="phone" class="form-control" pattern="[0-9]{10}$" name="phone" ngModel minlength="10" maxlength="10">
         </div>
       </li>
 
@@ -156,9 +139,9 @@
           <label for="profession">
             Profession :
           </label>
-          <select id="profession" class="form-control" name="profession" ngModel required>
+          <select id="profession" class="form-control" name="profession" ngModel required style="width:196px">
             <option value="Médecin_généraliste">Médecin_généraliste</option>
-            <option value="Chirurgien">Chirurgien</option>
+            <option value="Chirurgien" selected>Chirurgien</option>
             <option value="Infirmier">Infirmier</option>
             <option value="kinésithérapeute">kinésithérapeute</option>
             <option value="Assistante_Sociale">Assistante_Sociale</option>
@@ -168,18 +151,29 @@
         </div>
       </li>
 
-      <li>
-        <button class="btn btn-primary" type="submit" [disabled]="f.invalid">
+      <li style="margin-left: 125px">
+        <button class="btn btn-primary btn-add" type="submit" [disabled]="f.invalid">
           Apply
         </button>
-      </li>
 
+        <button (click)='onCreateStopView()' *ngIf="addPro=== true" class="btn btn-secondary btn-add">
+          Cancel
+        </button>
+      </li>
     </form>
-    <li>
-      <button (click)='onCreateStopView()' *ngIf="addPro=== true ">
-        Cancel
-      </button>
-    </li>
+  </ul>
+
+  <!-- read all professionals -->
+  <ul class="list-group">
+    <app-professional *ngFor="let professionnal of professionals"
+                          [name]='professionnal.name'
+                          [firstname]='professionnal.firstname'
+                          [email]='professionnal.email'
+                          [profession]='professionnal.profession'
+                          [phone]='professionnal.phone'
+                          [address]='professionnal.address'
+                          [id]='professionnal.id' >
+    </app-professional>
   </ul>
 </div>
 
