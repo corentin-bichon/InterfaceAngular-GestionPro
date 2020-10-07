@@ -23,11 +23,11 @@
 
     <div class="form-group">
       <div>
-        <input type="checkbox"  id="customControlInline">
-        <label class="remember" for="customControlInline" > Remember me</label>
+        <mat-card-content>
+        <mat-slide-toggle color="primary" > Remember me </mat-slide-toggle>
+        </mat-card-content>
       </div>
     </div>
-
 
     <div class="col-md-12">
         <button class="btn btn-success" *ngIf="!authStatus" (click)="onSignIn()">

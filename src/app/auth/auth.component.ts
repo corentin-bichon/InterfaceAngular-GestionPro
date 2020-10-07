@@ -10,10 +10,10 @@ import { ProfessionalCustomService } from '../services/professional-custom.servi
 })
 export class AuthComponent implements OnInit {
 
+  constructor(private authService: AuthService, private enterpriseService: ProfessionalCustomService , private router: Router) { }
+
   authStatus: boolean;
   logo = 'https://mikekim.com/wp-content/uploads/2017/01/logo-here.png';
-
-  constructor(private authService: AuthService, private enterpriseService: ProfessionalCustomService , private router: Router) { }
 
   ngOnInit(): void {
   this.authStatus = this.authService.getAuth();
@@ -38,6 +38,6 @@ export class AuthComponent implements OnInit {
     this.authService.signOut();
     this.authStatus = this.authService.getAuth();
  }
-
 }
+
 

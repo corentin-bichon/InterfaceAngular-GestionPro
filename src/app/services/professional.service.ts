@@ -2,11 +2,12 @@ import {Subject} from 'rxjs';
 import {Injectable, OnInit} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {ActivatedRoute} from '@angular/router';
+import {SnackService} from './snack.service';
 
 @Injectable()
 export class ProfessionalService implements OnInit {
 
-  constructor(private httpClient: HttpClient, private route: ActivatedRoute) {}
+  constructor(private httpClient: HttpClient, private route: ActivatedRoute, private snackService: SnackService ) {}
 
   trie = '%' ;
   idSelect = '%' ;
@@ -32,13 +33,11 @@ export class ProfessionalService implements OnInit {
   ngOnInit(): void {
   }
 
-  // tslint:disable-next-line:typedef
-  emitProfessionnalSubject() {
+  emitProfessionnalSubject(): void {
     this.professionalSubject.next(this.professional.slice());
   }
 
-  // tslint:disable-next-line:typedef
-  saveProfessionalsToServer() {
+  saveProfessionalsToServer(): void {
     this.httpClient
       .post('http://localhost:8080/api/professionals', this.professionalTest )
       .subscribe(
@@ -52,8 +51,7 @@ export class ProfessionalService implements OnInit {
       );
   }
 
-  // tslint:disable-next-line:typedef
-  getProfessionalsFromServer(trie, idSelect, nameSelect, professionalSelect) {
+  getProfessionalsFromServer(trie, idSelect, nameSelect, professionalSelect): void {
     this.httpClient
       // tslint:disable-next-line:max-line-length
       .get<any[]>('http://localhost:8080/api/professionals?choice=' + trie + '&id=' + idSelect + '&name=' + nameSelect + '&profession=' + professionalSelect)
@@ -69,13 +67,13 @@ export class ProfessionalService implements OnInit {
       );
   }
 
-  // tslint:disable-next-line:typedef
-  deleteProfessionalsFromServer(id) {
+  deleteProfessionalsFromServer(id): void {
     this.httpClient
       .delete('http://localhost:8080/api/professionals/' + id)
       .subscribe(
         () => {
           console.log(' Suppression : Success !');
+          this.snackService.openSnackBarDeleteProfessional(name);
           this.getProfessionalsFromServer('id', '%', '%', 'Percent');
         },
         (error) => {
@@ -84,8 +82,7 @@ export class ProfessionalService implements OnInit {
       );
   }
 
-  // tslint:disable-next-line:typedef
-  updateProfessionalsFromServer(id, professional) {
+  updateProfessionalsFromServer(id, professional): void {
     this.httpClient
       .put('http://localhost:8080/api/professionals/' + id , professional  )
       .subscribe(
@@ -99,8 +96,7 @@ export class ProfessionalService implements OnInit {
       );
   }
 
-  // tslint:disable-next-line:typedef
-  createProfessionalsFromServer(professional) {
+  createProfessionalsFromServer(professional): void {
     this.httpClient
       .post('http://localhost:8080/api/professionals', professional  )
       .subscribe(

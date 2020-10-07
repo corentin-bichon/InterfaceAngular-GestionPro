@@ -1,10 +1,12 @@
-import {Component, Inject, Input, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import { ProfessionalService } from '../services/professional.service';
 import {NgForm} from '@angular/forms';
 import {PatientService} from '../services/patient.service';
 import {Subscription} from 'rxjs';
 import { RelationService } from '../services/relation.service';
-import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import { DialogService } from '../services/dialog.service';
+import {SnackService} from '../services/snack.service';
+
 
 @Component({
   selector: 'app-professional',
@@ -14,7 +16,7 @@ import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog
 export class ProfessionalComponent implements OnInit {
 
   // tslint:disable-next-line:max-line-length
-  constructor(private professionalService: ProfessionalService, private patientService: PatientService, private relationService: RelationService, public dialog: MatDialog ) {
+  constructor(private professionalService: ProfessionalService, private patientService: PatientService, private relationService: RelationService, public dialogService: DialogService, private snackService: SnackService) {
     this.patientService.getPatientFromServer();
     this.relationService.getRelationFromServer('%');
   }
@@ -28,15 +30,14 @@ export class ProfessionalComponent implements OnInit {
   @Input() phone: string;
   @Input() id: number;
 
-  modification = false ;
-  relationView = false ;
+  modification = false;
+  relationView = false;
 
   relations: any[];
   relationSubsription: Subscription;
   patients: any[];
   patientSubsription: Subscription;
 
-  onded;
   ngOnInit(): void {
     this.patientSubsription = this.patientService.patientSubject.subscribe(
       (patients: any[]) => {
@@ -50,102 +51,66 @@ export class ProfessionalComponent implements OnInit {
     );
   }
 
-  // tslint:disable-next-line:typedef
-  getId() {
-    return this.id ;
+
+  getId(): number {
+    return this.id;
   }
 
-  // tslint:disable-next-line:typedef
-  onDelete(id) {
+  onDelete(id): void {
     this.professionalService.deleteProfessionalsFromServer(id);
   }
 
-  // tslint:disable-next-line:typedef
-  onUpdateView() {
-    this.modification = true ;
+  onUpdateView(): void {
+    this.modification = true;
   }
 
-  // tslint:disable-next-line:typedef
-  onUpdate(id, form: NgForm) {
+  onUpdate(id, form: NgForm): void {
     console.log(form.value);
     this.professionalService.updateProfessionalsFromServer(id, form.value);
+    this.snackService.openSnackBarPostProfessional(name);
   }
 
-  // tslint:disable-next-line:typedef
-  onFetch() {
+  onFetch(): void {
     this.professionalService.getProfessionalsFromServer('id', '%', '%', 'Percent');
   }
 
-  // tslint:disable-next-line:typedef
-  onRelationView() {
-    this.relationView = true ;
+  onRelationView(): void {
+    this.relationView = true;
   }
 
-  // tslint:disable-next-line:typedef
-  OnViewPatient(id) {
+  OnViewPatient(id): string {
     // tslint:disable-next-line:forin
-    for (const index in this.patients ) {
-      if ( this.patients[index].id === id ) {
-        return this.patients[index].firstname + ' ' + this.patients[index].name.toUpperCase() ;
+    for (const index in this.patients) {
+      if (this.patients[index].id === id) {
+        return this.patients[index].firstname + ' ' + this.patients[index].name.toUpperCase();
       }
     }
     return 'error';
   }
 
-  /* Mettre en vert les patients qui ont ce professionel en medecin traitant
-  <div [ngStyle]="{color: (OnViewRegularDoctor(id) === true  ? 'green' : 'default') }">
-  // tslint:disable-next-line:typedef
-  OnViewRegularDoctor(id) {
-    // tslint:disable-next-line:forin
-    for (const index in this.relations) {
-      console.log(this.relations[index].pro_id);
-      if (this.relations[index].pro_id === id && this.relations[index].regular_doctor) {
-        console.log(this.relations[index].regular_doctor);
-        return true ;
-      }
-    }
-  }
-  */
-
-  // tslint:disable-next-line:typedef
-  onCreateRelation(form: NgForm ) {
+  onCreateRelation(form: NgForm): void {
     form.value.pro_id = String(this.id);
     console.log(form.value);
     this.relationService.saveRelationToServer(form.value);
     this.relationService.getRelationFromServer('%');
   }
 
-  openDialog(): void {
-    const dialogRef = this.dialog.open(DialogOverviewDeleteComponent, {
-      width: '250px',
-      data: {name: this.name, firstname: this.firstname, id: this.id }
-    });
-  }
+      /* Mettre en vert les patients qui ont ce professionel en medecin traitant
+    <div [ngStyle]="{color: (OnViewRegularDoctor(id) === true  ? 'green' : 'default') }">
+    // tslint:disable-next-line:typedef
+    OnViewRegularDoctor(id) {
+      // tslint:disable-next-line:forin
+      for (const index in this.relations) {
+        console.log(this.relations[index].pro_id);
+        if (this.relations[index].pro_id === id && this.relations[index].regular_doctor) {
+          console.log(this.relations[index].regular_doctor);
+          return true ;
+        }
+      }
+    }
+    */
 }
 
-export interface DialogData {
-  firstname: string;
-  name: string;
-  id: string;
-}
 
-@Component({
-  selector: 'app-dialog-overview',
-  templateUrl: 'dialog-overview-delete.html',
-})
-export class DialogOverviewDeleteComponent {
 
-  constructor(
-    public dialogRef: MatDialogRef<DialogOverviewDeleteComponent>,
-    private professionalService: ProfessionalService,
-    @Inject(MAT_DIALOG_DATA) public data: DialogData) {}
 
-  onNoClick(): void {
-    this.dialogRef.close();
-  }
-
-  onClick(id): void {
-    this.professionalService.deleteProfessionalsFromServer(id);
-    this.dialogRef.close();
-  }
-}

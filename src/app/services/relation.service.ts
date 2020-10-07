@@ -54,4 +54,21 @@ export class RelationService implements OnInit {
       );
   }
 
+  // tslint:disable-next-line:typedef
+  DeleteRelationFromServer( rNum, patId, proId ) {
+    this.httpClient
+      // tslint:disable-next-line:max-line-length
+      .delete<any[]>('http://localhost:8080/api/relation?pat_id=' + patId + '&pro_id=' + proId + '&rNum=' + rNum)
+      .subscribe(
+        (response) => {
+          this.relation = response;
+          this.getRelationFromServer('%');
+          console.log('Delete RelationFromServer : success');
+        },
+        (error) => {
+          console.log('Erreur ! : ' + error);
+        }
+      );
+  }
+
 }

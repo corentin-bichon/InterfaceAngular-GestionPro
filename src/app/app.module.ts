@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { ProfessionalViewComponent } from './professional-view/professional-view.component';
-import {DialogOverviewDeleteComponent, ProfessionalComponent} from './professional/professional.component';
+import {ProfessionalComponent } from './professional/professional.component';
 import {ProfessionalService} from './services/professional.service';
 import {RouterModule, Routes} from '@angular/router';
 import {HttpClientModule} from '@angular/common/http';
@@ -18,8 +18,11 @@ import { PatientService } from './services/patient.service';
 import { RelationService } from './services/relation.service';
 import {MatDialogModule} from '@angular/material/dialog';
 import {BrowserAnimationsModule, NoopAnimationsModule} from '@angular/platform-browser/animations';
-
-
+import {MatSnackBarModule} from '@angular/material/snack-bar';
+import { DialogService } from './services/dialog.service';
+import {DialogOverviewDeleteComponent} from './professional/dialog-overview-delete.component';
+import { SnackService } from './services/snack.service';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 
 
 const appRoutes: Routes = [
@@ -38,7 +41,7 @@ const appRoutes: Routes = [
     ProfessionalComponent,
     AuthComponent,
     FourOhFourComponent,
-    DialogOverviewDeleteComponent
+    DialogOverviewDeleteComponent,
   ],
   imports: [
     FormsModule,
@@ -48,9 +51,11 @@ const appRoutes: Routes = [
     RouterModule.forRoot(appRoutes),
     BrowserAnimationsModule,
     NoopAnimationsModule,
+    MatDialogModule,
+    MatSnackBarModule,
+    MatSlideToggleModule
   ],
   exports: [
-    MatDialogModule,
   ],
   providers: [
     ProfessionalService,
@@ -59,6 +64,8 @@ const appRoutes: Routes = [
     ProfessionalCustomService,
     PatientService,
     RelationService,
+    DialogService,
+    SnackService
   ],
   bootstrap: [AppComponent]
 })

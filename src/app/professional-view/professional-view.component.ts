@@ -3,6 +3,7 @@ import {Subscription} from 'rxjs';
 import { ProfessionalService } from '../services/professional.service';
 import {NgForm} from '@angular/forms';
 import {ProfessionalCustomService} from '../services/professional-custom.service';
+import {SnackService} from '../services/snack.service';
 
 @Component({
   selector: 'app-professional-view',
@@ -12,7 +13,7 @@ import {ProfessionalCustomService} from '../services/professional-custom.service
 export class ProfessionalViewComponent implements OnInit {
 
   // tslint:disable-next-line:max-line-length
-  constructor(private professionalService: ProfessionalService ,  private enterpriseService: ProfessionalCustomService ) {
+  constructor(private professionalService: ProfessionalService ,  private enterpriseService: ProfessionalCustomService, private snackService: SnackService) {
     this.professionalService.getProfessionalsFromServer('id', '%', '%', 'Percent');
   }
 
@@ -29,8 +30,7 @@ export class ProfessionalViewComponent implements OnInit {
 
   name = '' ;
 
-  // tslint:disable-next-line:typedef
-  ngOnInit(){
+  ngOnInit(): void {
     this.professionalSubsription = this.professionalService.professionalSubject.subscribe(
       (professionals: any[]) => {
         this.professionals = professionals;
@@ -50,6 +50,7 @@ export class ProfessionalViewComponent implements OnInit {
     console.log(form.value);
     this.professionalService.createProfessionalsFromServer(form.value);
     this.onCreateStopView();
+    this.snackService.openSnackBarAddProfessional(form.value.name.toUpperCase());
   }
 
   // tslint:disable-next-line:typedef
@@ -85,6 +86,4 @@ export class ProfessionalViewComponent implements OnInit {
     // tslint:disable-next-line:max-line-length
     this.professionalService.getProfessionalsFromServer( this.sortS, this.idS, this.nameS, this.professionS);
   }
-
-
 }
