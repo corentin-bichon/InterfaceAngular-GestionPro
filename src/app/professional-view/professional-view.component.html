@@ -165,15 +165,15 @@
 
   <!-- read all professionals -->
   <div class="list-group">
-    <app-professional *ngFor="let professionnal of professionals"
-                          [name]='professionnal.name'
-                          [firstname]='professionnal.firstname'
-                          [email]='professionnal.email'
-                          [profession]='professionnal.profession'
-                          [phone]='professionnal.phone'
-                          [address]='professionnal.address'
-                          [id]='professionnal.id' class="app-pro">
-    </app-professional>
+        <app-professional   *ngFor="let professionnal of professionals"
+                              [name]='professionnal.name'
+                              [firstname]='professionnal.firstname'
+                              [email]='professionnal.email'
+                              [profession]='professionnal.profession'
+                              [phone]='professionnal.phone'
+                              [address]='professionnal.address'
+                              [id]='professionnal.id' class="app-pro">
+        </app-professional>
   </div>
 </div>
 

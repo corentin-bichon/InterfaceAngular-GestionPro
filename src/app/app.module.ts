@@ -23,6 +23,8 @@ import { DialogService } from './services/dialog.service';
 import {DialogOverviewDeleteComponent} from './professional/dialog-overview-delete.component';
 import { SnackService } from './services/snack.service';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import {MatPaginatorModule} from '@angular/material/paginator';
+import { MatListModule } from '@angular/material/list';
 
 
 const appRoutes: Routes = [
@@ -53,9 +55,12 @@ const appRoutes: Routes = [
     NoopAnimationsModule,
     MatDialogModule,
     MatSnackBarModule,
-    MatSlideToggleModule
+    MatSlideToggleModule,
+    MatPaginatorModule,
+    MatListModule,
   ],
   exports: [
+
   ],
   providers: [
     ProfessionalService,

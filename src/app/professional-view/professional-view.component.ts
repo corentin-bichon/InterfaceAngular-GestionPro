@@ -55,7 +55,7 @@ export class ProfessionalViewComponent implements OnInit {
 
   // tslint:disable-next-line:typedef
   onCreateView() {
-    this.addPro = true;
+    this.addPro = this.addPro === true ? false : true ;
   }
 
   // tslint:disable-next-line:typedef
@@ -65,7 +65,7 @@ export class ProfessionalViewComponent implements OnInit {
 
   // tslint:disable-next-line:typedef
   onSortView() {
-    this.sortPro = true ;
+    this.sortPro = this.sortPro === true ? false : true ;
   }
 
   // tslint:disable-next-line:typedef

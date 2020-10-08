@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, ElementRef, Input, OnInit, Renderer2} from '@angular/core';
 import { ProfessionalService } from '../services/professional.service';
 import {NgForm} from '@angular/forms';
 import {PatientService} from '../services/patient.service';
@@ -8,10 +8,11 @@ import { DialogService } from '../services/dialog.service';
 import {SnackService} from '../services/snack.service';
 
 
+
 @Component({
   selector: 'app-professional',
   templateUrl: './professional.component.html',
-  styleUrls: ['./professional.component.css']
+  styleUrls: ['./professional.component.css'],
 })
 export class ProfessionalComponent implements OnInit {
 
@@ -32,6 +33,8 @@ export class ProfessionalComponent implements OnInit {
 
   modification = false;
   relationView = false;
+  patientView = false;
+  modifyRelation = false;
 
   relations: any[];
   relationSubsription: Subscription;
@@ -61,7 +64,7 @@ export class ProfessionalComponent implements OnInit {
   }
 
   onUpdateView(): void {
-    this.modification = true;
+    this.modification = this.modification  === true ? false : true ;
   }
 
   onUpdate(id, form: NgForm): void {
@@ -75,7 +78,7 @@ export class ProfessionalComponent implements OnInit {
   }
 
   onRelationView(): void {
-    this.relationView = true;
+    this.relationView = this.relationView === true ? false : true ;
   }
 
   OnViewPatient(id): string {
@@ -93,6 +96,14 @@ export class ProfessionalComponent implements OnInit {
     console.log(form.value);
     this.relationService.saveRelationToServer(form.value);
     this.relationService.getRelationFromServer('%');
+  }
+
+  onDeletePatient(id): void {
+    this.relationService.DeleteRelationFromServer(id, '%', '%');
+  }
+
+  onUpdateRelation(): void {
+    this.modifyRelation = this.modifyRelation === true ? false : true ;
   }
 
       /* Mettre en vert les patients qui ont ce professionel en medecin traitant

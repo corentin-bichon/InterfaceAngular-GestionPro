@@ -4,6 +4,21 @@
   margin-top: 20px;
 }
 
+.titrePro {
+  width: 300px;
+  display: inline-flex;
+  margin: 0;
+  align-items: center;
+}
+
+.tools {
+  width: 200px;
+  margin-left: 10px;
+  display: inline-flex;
+  align-items: center;
+}
+
+
 h5 {
   text-align: center ;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -11,6 +26,21 @@ h5 {
   display: block;
   text-transform: uppercase;
   font-weight:bold;
+}
+
+.pro-info {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  max-height: 140px;
+
+}
+
+.relation-info {
+  width: 400px;
+  height: 150px;
+  overflow: auto;
+  margin: -30px 20px 10px auto;
 }
 
 input:invalid {
@@ -44,4 +74,25 @@ input:focus:invalid {
   min-height: inherit;
   max-height: inherit;
 }
+
+.myPatient {
+  margin: 0;
+  width: 350px;
+  display: inline-flex;
+
+}
+
+a.delete {
+  color: #E34724;
+}
+
+a {
+  cursor: pointer;
+  display: inline-block;
+  margin: 5px 0 0 0px;
+  min-width: 15px;
+}
+
+
+
 
