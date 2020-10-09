@@ -84,6 +84,14 @@ input:focus:invalid {
 
 a.delete {
   color: #E34724;
+  line-height: 0.5;
+  margin: 0px 0px 0px 0px;
+}
+
+update {
+  width:17px;
+  height:17px;
+  margin: 0px 0px 0px 0px ;
 }
 
 a {
@@ -91,6 +99,14 @@ a {
   display: inline-block;
   margin: 5px 0 0 0px;
   min-width: 15px;
+}
+
+
+.listRelation {
+  height: 75px;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
 }
 
 

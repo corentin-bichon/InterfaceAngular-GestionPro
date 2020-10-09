@@ -102,9 +102,16 @@ export class ProfessionalComponent implements OnInit {
     this.relationService.DeleteRelationFromServer(id, '%', '%');
   }
 
-  onUpdateRelation(): void {
+  onUpdateViewRelation(): void {
     this.modifyRelation = this.modifyRelation === true ? false : true ;
   }
+
+  onUpdateRelation(rNum): void {
+    console.log(rNum);
+    console.log(this.relations.find(e => e.rNum === rNum));
+    this.relationService.UpdateRelationToServer(rNum , this.relations.find(e => e.rNum === rNum));
+  }
+
 
       /* Mettre en vert les patients qui ont ce professionel en medecin traitant
     <div [ngStyle]="{color: (OnViewRegularDoctor(id) === true  ? 'green' : 'default') }">

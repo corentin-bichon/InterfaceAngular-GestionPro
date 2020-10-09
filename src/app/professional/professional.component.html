@@ -27,7 +27,7 @@
       My patient(s) :
     </span>
 
-    <a (click)='onUpdateRelation()' class="edit" title="Edit" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>
+    <a (click)='onUpdateViewRelation()' class="edit" title="Edit" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>
 
   </h4>
 
@@ -52,8 +52,9 @@
                <span style="color: black"> {{ r.pat_id }} - {{ OnViewPatient(r.pat_id) }}
                  <span *ngIf="r.regular_doctor"> <img style="width:17px;height:17px;vertical-align:top" src="https://icons.iconarchive.com/icons/paomedia/small-n-flat/1024/star-icon.png"> </span>
                  <span *ngIf="!modifyRelation"> <br>  &nbsp;&nbsp;&nbsp; {{ r.sickness }} </span>
-                 <span *ngIf="modifyRelation"> <input type="text" style='white-space:nowrap;' class="form-control" name="modifySickness" [(ngModel)]='r.sickness' > </span> </span>
-            </span>
+                 <span *ngIf="modifyRelation"> <input type="text" style='width: 300px;display:unset' class="form-control" name="modifySickness" [(ngModel)]='r.sickness' >  <a *ngIf="modifyRelation" (click)='onUpdateRelation(r.rNum)'> <img style="width:17px;height:17px;margin: 0;"  src="https://cdn2.iconfinder.com/data/icons/color-svg-vector-icons-part-2/512/apply_ok_check_yes_dialog-512.png"> </a>  </span>
+               </span>
+             </span>
           </mat-list-option>
         </ng-container>
       </mat-selection-list>

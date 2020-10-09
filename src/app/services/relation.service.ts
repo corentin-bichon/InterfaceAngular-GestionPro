@@ -71,4 +71,19 @@ export class RelationService implements OnInit {
       );
   }
 
+  // tslint:disable-next-line:typedef
+  UpdateRelationToServer(rNum , relation) {
+    this.httpClient
+      .put('http://localhost:8080/api/relation/' + rNum , relation )
+      .subscribe(
+        () => {
+          console.log('Update relation terminé !');
+          this.getRelationFromServer('%');
+        },
+        (error) => {
+          console.log('Erreur ! : ' + error);
+        }
+      );
+  }
+
 }
