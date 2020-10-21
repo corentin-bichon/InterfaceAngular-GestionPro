@@ -1,6 +1,7 @@
 import {Injectable} from '@angular/core';
 import { MatDialog} from '@angular/material/dialog';
-import {DialogOverviewDeleteComponent} from '../professional/dialog-overview-delete.component';
+import {DialogOverviewDeleteProfessionalComponent} from '../professional/dialog-overview-delete-professional.component';
+import {DialogOverviewDeletePatientComponent} from '../patient/dialog-overview-delete-patient.component';
 
 
 @Injectable()
@@ -9,8 +10,16 @@ export class DialogService {
   constructor( private  dialog: MatDialog ) {
   }
 
-  openDialog(name, firstname, id): void {
-    this.dialog.open(DialogOverviewDeleteComponent, {
+  openDeleteProfessionalDialog(name, firstname, id): void {
+    this.dialog.open(DialogOverviewDeleteProfessionalComponent, {
+      width: '500px',
+      data: {name, firstname, id },
+      panelClass: 'custom-dialog-container'
+    });
+  }
+
+  openDeletePatientDialog(name, firstname, id): void {
+    this.dialog.open(DialogOverviewDeletePatientComponent, {
       width: '500px',
       data: {name, firstname, id },
       panelClass: 'custom-dialog-container'

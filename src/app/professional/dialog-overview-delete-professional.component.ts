@@ -10,10 +10,10 @@ import {SnackService} from '../services/snack.service';
   templateUrl: './dialog-overview-delete.html',
 })
 @Injectable()
-export class DialogOverviewDeleteComponent {
+export class DialogOverviewDeleteProfessionalComponent {
 
   constructor(
-    public dialogRef: MatDialogRef<DialogOverviewDeleteComponent>,
+    public dialogRef: MatDialogRef<DialogOverviewDeleteProfessionalComponent>,
     private professionalService: ProfessionalService,
     private snackService: SnackService,
     private relationService: RelationService,
@@ -27,7 +27,7 @@ export class DialogOverviewDeleteComponent {
     this.relationService.DeleteRelationFromServer('%', '%', id);
     this.professionalService.deleteProfessionalsFromServer(id);
     this.dialogRef.close();
-    this.snackService.openSnackBarDeleteProfessional(name);
+    this.snackService.openSnackBarDeleteRole('professional' , name);
   }
 }
 

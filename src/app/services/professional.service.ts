@@ -9,22 +9,7 @@ export class ProfessionalService implements OnInit {
 
   constructor(private httpClient: HttpClient, private route: ActivatedRoute, private snackService: SnackService ) {}
 
-  trie = '%' ;
-  idSelect = '%' ;
-  nameSelect = '%' ;
-  professionSelect = 'Percent' ;
-
-
   private professional = [] ;
-  private professionalTest = {
-      address: '30 Rue du louvre',
-      email: 'samantha.barbara@gmail.com',
-      firstname: 'Samantha',
-      name: 'Barbara',
-      phone: '0605040405',
-      profession: 'Infirmier',
-    }
-  ;
 
   professionalSubject = new Subject<any[]>();
 
@@ -35,20 +20,6 @@ export class ProfessionalService implements OnInit {
 
   emitProfessionnalSubject(): void {
     this.professionalSubject.next(this.professional.slice());
-  }
-
-  saveProfessionalsToServer(): void {
-    this.httpClient
-      .post('http://localhost:8080/api/professionals', this.professionalTest )
-      .subscribe(
-        () => {
-          console.log('Enregistrement terminé !');
-          this.getProfessionalsFromServer('id', '%', '%', 'Percent');
-        },
-        (error) => {
-          console.log('Erreur ! : ' + error);
-        }
-      );
   }
 
   getProfessionalsFromServer(trie, idSelect, nameSelect, professionalSelect): void {
@@ -73,7 +44,7 @@ export class ProfessionalService implements OnInit {
       .subscribe(
         () => {
           console.log(' Suppression : Success !');
-          this.snackService.openSnackBarDeleteProfessional(name);
+          this.snackService.openSnackBarDeleteRole('professional' , name);
           this.getProfessionalsFromServer('id', '%', '%', 'Percent');
         },
         (error) => {

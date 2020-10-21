@@ -50,7 +50,7 @@ export class ProfessionalViewComponent implements OnInit {
     console.log(form.value);
     this.professionalService.createProfessionalsFromServer(form.value);
     this.onCreateStopView();
-    this.snackService.openSnackBarAddProfessional(form.value.name.toUpperCase());
+    this.snackService.openSnackBarAddRole('professional' , form.value.name.toUpperCase());
   }
 
   // tslint:disable-next-line:typedef

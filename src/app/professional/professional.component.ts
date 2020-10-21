@@ -18,7 +18,7 @@ export class ProfessionalComponent implements OnInit {
 
   // tslint:disable-next-line:max-line-length
   constructor(private professionalService: ProfessionalService, private patientService: PatientService, private relationService: RelationService, public dialogService: DialogService, private snackService: SnackService) {
-    this.patientService.getPatientFromServer();
+    this.patientService.getPatientFromServer('id', '%', '%');
     this.relationService.getRelationFromServer('%');
   }
 
@@ -70,7 +70,7 @@ export class ProfessionalComponent implements OnInit {
   onUpdate(id, form: NgForm): void {
     console.log(form.value);
     this.professionalService.updateProfessionalsFromServer(id, form.value);
-    this.snackService.openSnackBarPostProfessional(name);
+    this.snackService.openSnackBarPostRole('professional' , name);
   }
 
   onFetch(): void {

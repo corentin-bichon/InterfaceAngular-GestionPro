@@ -20,17 +20,24 @@ import {MatDialogModule} from '@angular/material/dialog';
 import {BrowserAnimationsModule, NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { DialogService } from './services/dialog.service';
-import {DialogOverviewDeleteComponent} from './professional/dialog-overview-delete.component';
+import {DialogOverviewDeleteProfessionalComponent} from './professional/dialog-overview-delete-professional.component';
 import { SnackService } from './services/snack.service';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import { MatListModule } from '@angular/material/list';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
+import { PatientViewComponent } from './patient-view/patient-view.component';
+import { PatientComponent } from './patient/patient.component';
+import {DialogOverviewDeletePatientComponent} from './patient/dialog-overview-delete-patient.component';
+import { HelpComponent } from './help/help.component';
 
 
 const appRoutes: Routes = [
   {path: 'professional', canActivate: [AuthGuard], component: ProfessionalViewComponent},
+  {path: 'patient', canActivate: [AuthGuard], component: PatientViewComponent},
   {path: 'auth', component: AuthComponent},
-  {path: '', canActivate: [AuthGuard], component: ProfessionalViewComponent},
+  {path: '', canActivate: [AuthGuard], component: AuthComponent},
   {path: 'not-found', component: FourOhFourComponent },
   {path: '**', redirectTo: '/not-found'},
 ];
@@ -43,7 +50,11 @@ const appRoutes: Routes = [
     ProfessionalComponent,
     AuthComponent,
     FourOhFourComponent,
-    DialogOverviewDeleteComponent,
+    DialogOverviewDeleteProfessionalComponent,
+    DialogOverviewDeletePatientComponent,
+    PatientViewComponent,
+    PatientComponent,
+    HelpComponent,
   ],
   imports: [
     FormsModule,
@@ -58,6 +69,7 @@ const appRoutes: Routes = [
     MatSlideToggleModule,
     MatPaginatorModule,
     MatListModule,
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
   ],
   exports: [
 

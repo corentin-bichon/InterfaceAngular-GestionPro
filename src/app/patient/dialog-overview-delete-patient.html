@@ -1,0 +1,52 @@
+<style>
+  h1 {
+    text-align: center ;
+    font-weight: bold;
+    color: #1c1a1a;
+    margin-top: -30px;
+    padding-top: 25px;
+  }
+
+  p {
+    text-align: center ;
+  }
+
+
+  h5 {
+    color : darkgray ;
+    text-align: center ;
+  }
+
+  mat-dialog-actions {
+    margin-right: 7px;
+  }
+
+  .btn {
+    text-align: center ;
+    margin-bottom: 25px;
+    margin-top: 15px;
+  }
+  .btn-success {
+    margin-left: 135px ;
+  }
+
+  .btn-danger {
+    margin-left: 25px ;
+  }
+
+
+</style>
+
+<body class="custom-modalbox">
+<div>
+  <h1 mat-dialog-title> Do you confirm the deletion ? </h1>
+  <p mat-dialog-content>{{ data.id }} - {{ data.firstname }} {{ data.name | uppercase }}</p>
+
+  <h5 mat-dialog-content> If you confirm, your patient will be permanently deleted </h5>
+
+  <div mat-dialog-actions>
+    <button mat-button  class="btn btn-success" (click)="onClick(data.id)" cdkFocusInitial> Confirm </button>
+    <button mat-button class="btn btn-danger" (click)="onNoClick()"> Cancel </button>
+  </div>
+</div>
+</body>
