@@ -36,6 +36,7 @@ import { HelpComponent } from './help/help.component';
 const appRoutes: Routes = [
   {path: 'professional', canActivate: [AuthGuard], component: ProfessionalViewComponent},
   {path: 'patient', canActivate: [AuthGuard], component: PatientViewComponent},
+  {path: 'help', component: HelpComponent},
   {path: 'auth', component: AuthComponent},
   {path: '', canActivate: [AuthGuard], component: AuthComponent},
   {path: 'not-found', component: FourOhFourComponent },
