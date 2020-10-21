@@ -1,0 +1,111 @@
+h1 {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  text-align: center;
+  color: #0C768A;
+  display: block;
+  text-transform: uppercase;
+  margin-top: -23px;
+  margin-bottom: 50px;
+}
+
+h3 {
+  margin-top: 40px;
+  font-size: 12px;
+  text-align: center;
+  text-transform: uppercase;
+  color: #fd4c82;
+  letter-spacing: 2px;
+  font-weight: 900;
+
+}
+
+.box {
+  display: flex;
+  flex-direction: column;
+}
+
+ul {
+  list-style-type: none;
+  padding:0;
+  overflow: hidden;
+  background-color: #0C768A;
+}
+
+li {
+  cursor: pointer;
+  float: left;
+}
+
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+li a:hover:not(.active) {
+  background-image: linear-gradient(208deg,#ff3247 0%,#d70860 100%)!important;
+}
+
+.active {
+  background-color : #d7085b;
+}
+
+.filter {
+  display: flex;
+  list-style-type: none;
+  padding:0;
+  margin-top: -15px;
+  overflow: hidden;
+  background-color: #479ba9;
+}
+
+.add {
+  display: flex;
+  flex-flow : column;
+  align-content: space-between;
+  align-items: center;
+  padding:20px 300px 20px 300px;
+  margin-top: -15px;
+  background-color: #a97393;
+}
+
+.form {
+  display: flex;
+  margin-left: 20px;
+  margin-top: 5px;
+}
+
+.form-group {
+  margin-right: 12px ;
+}
+
+.btn-success {
+  text-align: center;
+  margin: 23.5px 10px 0px 50px ;
+
+}
+
+.btn-sort {
+  text-align: center;
+  margin: 28px 10px 0px 10px ;
+
+}
+
+.btn-add {
+  text-align: center;
+  margin: 28px 10px 0px 10px ;
+}
+
+input:invalid {
+  box-shadow: 0 0 5px 1px red;
+}
+
+select:invalid {
+  box-shadow: 0 0 5px 1px red;
+}
+
+input:focus:invalid {
+  outline: none;
+}

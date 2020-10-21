@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "gestionprosante-4c996": {
+      "hosting": {
+        "GestionProAngular": [
+          "gestionprosante-4c996"
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,140 @@
+<div class="box">
+  <h3> patient </h3>
+  <h1> {{ name }}</h1>
+
+  <!-- tools bar with Add and Sort -->
+
+  <div class="barre">
+    <ul>
+      <li><a [ngStyle]="{backgroundColor: sortPatient === true  ? '#479ba9' : '#0C768A'}"  (click)='onSortView();onCreateStopView()'> Filter </a></li>
+      <li><a [ngStyle]="{backgroundColor: addPatient === true  ?  '#a97393' : '#0C768A'}" (click)="onCreateView();onSortStopView()" > Add </a></li>
+      <li style="float:right"><a (click)="onFetch()" > Refresh </a></li>
+    </ul>
+  </div>
+
+  <!-- Sort -->
+  <div *ngIf="sortPatient === true " class="filter" >
+
+    <div> <img style="width:65px;height:65px;" src="https://img.icons8.com/ios/452/filter-and-sort.png">   </div>
+
+    <form (ngSubmit)="onSort(f)" #f="ngForm" class="form">
+
+      <div class="form-group"  style="width: 70px">
+        <label for="idSelect">
+          id :
+        </label>
+        <input type="text" id="idSelect" class="form-control" name="idSelect" ngModel>
+      </div>
+
+
+
+      <div class="form-group">
+        <label for="nameSelect" >
+          Name :
+        </label>
+        <input type="text" id="nameSelect" class="form-control" name="nameSelect" ngModel>
+      </div>
+
+      <div class="form-group">
+        <label for="sortSelect">
+          Sort by :
+        </label>
+        <select id="sortSelect" class="form-control" name="sortSelect" ngModel>
+          <option value=""></option>
+          <option value="name">name</option>
+          <option value="firstname">firstname</option>
+        </select>
+      </div>
+
+
+
+      <div>
+        <button class="btn btn-success"  type="submit">
+          Apply
+        </button>
+      </div>
+
+    </form>
+
+    <div>
+      <button (click)='onSortStopView()' *ngIf="sortPatient === true " type="button" class="btn btn-secondary btn-sort">
+        Cancel
+      </button>
+    </div>
+  </div>
+
+
+  <!-- Add -->
+  <ul *ngIf="addPatient === true " class="add barre-pro" >
+    <li> <img style="width:65px;height:65px;margin-bottom: 20px" src="https://download.seaicons.com/icons/custom-icon-design/flatastic-4/512/Male-user-add-icon.png">  </li>
+    <form (ngSubmit)="onCreate(f)" #f="ngForm">
+      <li>
+        <div class="form-group">
+          <label for="name" >
+            Name :
+          </label>
+          <input type="text" id="name" class="form-control" name="name"  required ngModel>
+        </div>
+      </li>
+
+      <li>
+        <div class="form-group">
+          <label for="firstname">
+            firstname :
+          </label>
+          <input type="text" id="firstname" class="form-control" name="firstname"  required ngModel>
+        </div>
+      </li>
+
+      <li>
+        <div class="form-group">
+          <label for="email">
+            Email :
+          </label>
+          <input type="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"  id="email" class="form-control" name="email" ngModel style="width:404px">
+        </div>
+      </li>
+
+      <li>
+        <div class="form-group">
+          <label for="address">
+            Address :
+          </label>
+          <input type="text" id="address" class="form-control" name="address" ngModel  style="width:404px">
+        </div>
+      </li>
+
+      <li>
+        <div class="form-group">
+          <label for="phone">
+            Phone :
+          </label>
+          <input  id="phone" class="form-control" pattern="[0-9]{10}$" name="phone" ngModel minlength="10" maxlength="10">
+        </div>
+      </li>
+
+      <li style="margin-left: 125px">
+        <button class="btn btn-primary btn-add" type="submit" [disabled]="f.invalid">
+          Apply
+        </button>
+
+        <button (click)='onCreateStopView()' *ngIf="addPatient=== true" class="btn btn-secondary btn-add">
+          Cancel
+        </button>
+      </li>
+    </form>
+  </ul>
+
+  <!-- read all professionals -->
+  <div class="list-group">
+    <app-patient  *ngFor="let patient of patients"
+                        [name]='patient .name'
+                        [firstname]='patient .firstname'
+                        [email]='patient .email'
+                        [phone]='patient .phone'
+                        [address]='patient .address'
+                        [id]='patient .id'>
+    </app-patient>
+  </div>
+</div>
+

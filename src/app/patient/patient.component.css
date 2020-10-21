@@ -1,0 +1,82 @@
+.titrePro {
+  width: 300px;
+  display: inline-flex;
+  margin: 0;
+  align-items: center;
+}
+
+.tools {
+  width: 200px;
+  margin-left: 10px;
+  display: inline-flex;
+  align-items: center;
+}
+
+
+h5 {
+  text-align: center ;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color: #0C768A;
+  display: block;
+  text-transform: uppercase;
+  font-weight:bold;
+}
+
+.pro-info {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  max-height: 140px;
+
+}
+
+input:invalid {
+  box-shadow: 0 0 5px 1px red;
+}
+
+select:invalid {
+  box-shadow: 0 0 5px 1px red;
+}
+
+input:focus:invalid {
+  outline: none;
+}
+
+.list-group {
+  border-radius: 15px;
+  opacity: 0.9 ;
+  background-color: #bfd4ef;
+  margin-top: 10px ;
+}
+
+.custom-dialog-container {
+  padding: 0px !important;
+  display: block;
+  border-radius: 4px;
+  box-sizing: border-box;
+  overflow: auto;
+  outline: 0;
+  width: 100%;
+  height: 100%;
+  min-height: inherit;
+  max-height: inherit;
+}
+
+a.delete {
+  color: #E34724;
+  line-height: 0.5;
+  margin: 0px 0px 0px 0px;
+}
+
+update {
+  width:17px;
+  height:17px;
+  margin: 0px 0px 0px 0px ;
+}
+
+a {
+  cursor: pointer;
+  display: inline-block;
+  margin: 5px 0 0 0px;
+  min-width: 15px;
+}
