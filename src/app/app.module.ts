@@ -33,10 +33,12 @@ import {DialogOverviewDeletePatientComponent} from './patient/dialog-overview-de
 import { HelpComponent } from './help/help.component';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { HomeComponent } from './home/home.component';
 
 
 
 const appRoutes: Routes = [
+  {path: 'home', component:  HomeComponent},
   {path: 'professional', canActivate: [AuthGuard], component: ProfessionalViewComponent},
   {path: 'patient', canActivate: [AuthGuard], component: PatientViewComponent},
   {path: 'help', component: HelpComponent},
@@ -59,6 +61,7 @@ const appRoutes: Routes = [
     PatientViewComponent,
     PatientComponent,
     HelpComponent,
+    HomeComponent,
   ],
   imports: [
     FormsModule,
