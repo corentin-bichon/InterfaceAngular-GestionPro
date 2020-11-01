@@ -23,10 +23,10 @@ export class ProfessionalViewComponent implements OnInit {
   idS = '%';
   nameS = '%';
   professionS = 'Percent' ;
+  isLoading: boolean;
 
   professionals: any[];
   professionalSubsription: Subscription;
-
 
   name = '' ;
 
@@ -34,6 +34,7 @@ export class ProfessionalViewComponent implements OnInit {
     this.professionalSubsription = this.professionalService.professionalSubject.subscribe(
       (professionals: any[]) => {
         this.professionals = professionals;
+        this.isLoading = ( this.professionals.length === 0 );
       }
     );
     this.professionalService.emitProfessionnalSubject();

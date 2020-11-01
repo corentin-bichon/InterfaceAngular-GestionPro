@@ -31,6 +31,9 @@ import { PatientViewComponent } from './patient-view/patient-view.component';
 import { PatientComponent } from './patient/patient.component';
 import {DialogOverviewDeletePatientComponent} from './patient/dialog-overview-delete-patient.component';
 import { HelpComponent } from './help/help.component';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
+
 
 
 const appRoutes: Routes = [
@@ -64,13 +67,14 @@ const appRoutes: Routes = [
     AppRoutingModule,
     RouterModule.forRoot(appRoutes),
     BrowserAnimationsModule,
-    NoopAnimationsModule,
     MatDialogModule,
     MatSnackBarModule,
     MatSlideToggleModule,
     MatPaginatorModule,
     MatListModule,
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
+    MatProgressSpinnerModule,
+    MatProgressBarModule,
   ],
   exports: [
 

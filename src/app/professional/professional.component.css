@@ -77,7 +77,7 @@ input:focus:invalid {
 
 .myPatient {
   margin: 0;
-  width: 350px;
+  width: 50%;
   display: inline-flex;
 
 }

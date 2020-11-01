@@ -109,3 +109,10 @@ select:invalid {
 input:focus:invalid {
   outline: none;
 }
+
+mat-spinner {
+  text-align: center ;
+  margin-top: 100px;
+  margin-left: 45%;
+  margin-right: 45%;
+}

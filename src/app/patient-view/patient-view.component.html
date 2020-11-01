@@ -126,6 +126,7 @@
   </ul>
 
   <!-- read all professionals -->
+  <mat-spinner *ngIf="this.isLoading" color="accent"></mat-spinner>
   <div class="list-group">
     <app-patient  *ngFor="let patient of patients"
                         [name]='patient .name'

@@ -21,6 +21,7 @@ export class PatientViewComponent implements OnInit {
   sortS = 'id' ;
   idS = '%';
   nameS = '%';
+  isLoading: boolean ;
 
   patients: any[];
   patientSubsription: Subscription;
@@ -32,6 +33,7 @@ export class PatientViewComponent implements OnInit {
     this.patientSubsription = this.patientService.patientSubject.subscribe(
       (patients: any[]) => {
         this.patients = patients;
+        this.isLoading = ( this.patients.length === 0 );
       }
     );
     this.patientService.emitPatientSubject();
