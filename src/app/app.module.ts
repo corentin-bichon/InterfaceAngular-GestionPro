@@ -38,12 +38,12 @@ import { HomeComponent } from './home/home.component';
 
 
 const appRoutes: Routes = [
-  {path: 'home', component:  HomeComponent},
+  {path: 'home', component: HomeComponent},
   {path: 'professional', canActivate: [AuthGuard], component: ProfessionalViewComponent},
   {path: 'patient', canActivate: [AuthGuard], component: PatientViewComponent},
   {path: 'help', component: HelpComponent},
   {path: 'auth', component: AuthComponent},
-  {path: '', canActivate: [AuthGuard], component: AuthComponent},
+  {path: '', component: HomeComponent },
   {path: 'not-found', component: FourOhFourComponent },
   {path: '**', redirectTo: '/not-found'},
 ];

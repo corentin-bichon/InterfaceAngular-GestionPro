@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {ProfessionalCustomService} from '../services/professional-custom.service';
 
 @Component({
   selector: 'app-home',
@@ -7,6 +8,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent {
 
-  constructor() { }
+  name = '';
+
+  constructor(  private enterpriseService: ProfessionalCustomService ) {
+    this.name = this.enterpriseService.getEnterprise_Name;
+  }
 
 }

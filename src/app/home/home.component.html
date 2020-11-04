@@ -1,7 +1,6 @@
 <div class="home">
   <div class="container">
-
-    <h1> Professional Management </h1>
+    <div class="title"> Professional Management <br> {{ name }} </div>
 
     <svg class="pulse" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
       <circle id="Oval" cx="512" cy="512" r="512"></circle>
@@ -10,9 +9,12 @@
     </svg>
   </div>
 
+  <div class="text_container">
+    <img style="position: absolute;" src="https://www.tousauweb.com/wp-content/uploads/2020/04/trouver-medecin-300x245.png">
+    <div class="text">  Connected interface to control simply and efficiently all health professionals <br>  to manage your patients in a few clicks! </div>
+  </div>
+
   <div class="container2">
-    <div class="row">
-      <div class="container">
         <blockquote class="quote-card">
           <p>
             La raison d'être d'une organisation est de permettre à des gens ordinaires de faire des choses extraordinaires
@@ -22,12 +24,10 @@
             Peter Drucker
           </cite>
         </blockquote>
-      </div>
-    </div>
   </div>
-
 
   <div class="buttons">
     <a class="button" routerLink="../auth" > Login </a>
   </div>
+
 </div>
